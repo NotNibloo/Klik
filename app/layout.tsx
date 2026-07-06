@@ -8,6 +8,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
+import Silk from "./components/reactbits/Silk";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,9 @@ export default function RootLayout({
       <body
         className={`min-h-full text-[#F9FBFB] flex flex-col ${geistSans.className}`}>
         <ClerkProvider>
+          <div className="absolute h-full w-full z-1">
+            <Silk color="#1D1E20" />
+          </div>
           <header className="fixed top-0 left-0 right-0 z-50 px-4">
             <div className="border backdrop-blur dark:border-neutral-800 mt-4 bg-background/80 border-[#1D1E20] max-w-7xl mx-auto w-full">
               <div className="mx-auto max-w-7xl px-4">
@@ -43,7 +47,6 @@ export default function RootLayout({
                   <div className="flex items-center gap-3">
                     <div className="h-12 w-12 rounded-md bg-gray-300" />
                   </div>
-
                   <div className="flex items-center gap-2">
                     <Show when="signed-out">
                       <SignInButton>
@@ -74,7 +77,7 @@ export default function RootLayout({
               </div>
             </div>
           </header>
-          <main className="pt-28 flex-1">{children}</main>
+          <main className="pt-28 flex-1 z-40">{children}</main>
         </ClerkProvider>
       </body>
     </html>
